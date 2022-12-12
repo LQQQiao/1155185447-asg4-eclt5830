@@ -18,16 +18,23 @@
  * Date : 2022/12/02
  */
 
-import { Outlet } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import NavBar from "./components/NavBar/index";
+import Home from "./pages/Home/index";
+import Post from "./pages/Post/index";
+import MessageBoard from "./pages/MessageBoard/index";
 import "./App.css";
 
 const App = () => {
   return (
-    <div className="App">
+    <BrowserRouter>
       <NavBar />
-      <Outlet />
-    </div>
+      <Routes>
+        <Route path="/message-board" element={<MessageBoard />}></Route>
+        <Route path="/posts/:postId" element={<Post />}></Route>
+        <Route path="*" element={<Home />}></Route>
+      </Routes>
+    </BrowserRouter>
   );
 };
 
